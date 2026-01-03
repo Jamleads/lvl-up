@@ -1,0 +1,1459 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LVL UP Solutions LLC - Professional Credit Restoration</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon" />
+    <!-- emailjs -->
+    <head>
+      <script
+        type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+        defer
+      ></script>
+    </head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-green: #28a745;
+        --primary-gradient: linear-gradient(135deg, #28a745, #001499);
+        --dark-green: #1e7e34;
+        --light-green: #34ce57;
+        --gray-light: #f8f9fa;
+        --gray-medium: #6c757d;
+        --gray-dark: #343a40;
+        --white: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --shadow-hover: 0 8px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: var(--gray-dark);
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        background: var(--white);
+        box-shadow: var(--shadow);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+      .logo {
+        width: 20%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .logo img {
+        width: 60%;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--gray-dark);
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-green);
+      }
+
+      .mobile-menu {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--gray-dark);
+        cursor: pointer;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+            135deg,
+            rgba(40, 167, 69, 0.6),
+            rgba(0, 20, 153, 0.6)
+          ),
+          url("assets/bgccover.png");
+
+        background-size: cover;
+        background-position: center;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: var(--white);
+        position: relative;
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        animation: fadeInUp 1s ease;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0.95;
+        animation: fadeInUp 1s ease 0.2s both;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--white);
+        color: var(--primary-green);
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow);
+        animation: fadeInUp 1s ease 0.4s both;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .credit-score-animation {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        background: var(--white);
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .score-display {
+        text-align: center;
+        color: var(--gray-dark);
+      }
+
+      .score-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-green);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--gray-dark);
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--gray-medium);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Why Choose Us */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .feature-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-gradient);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1rem;
+        color: var(--white);
+        font-size: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: var(--gray-dark);
+      }
+
+      /* Pricing */
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .pricing-card {
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .pricing-card.featured {
+        border: 3px solid var(--primary-green);
+        transform: scale(1.05);
+      }
+
+      .pricing-header {
+        background: var(--gray-light);
+        padding: 2rem;
+        text-align: center;
+      }
+
+      .pricing-card.featured .pricing-header {
+        background: var(--primary-gradient);
+        color: var(--white);
+      }
+
+      .package-name {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .package-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      .pricing-body {
+        padding: 2rem;
+      }
+      .pricing-sub-text {
+        font-size: 12px;
+        margin-bottom: 2rem;
+      }
+      .feature-list {
+        list-style: none;
+        margin-bottom: 2rem;
+      }
+
+      .feature-list li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        color: var(--primary-green);
+        font-weight: bold;
+        margin-right: 0.5rem;
+      }
+
+      .select-button {
+        width: 100%;
+        background: var(--primary-gradient);
+        color: var(--white);
+        border: none;
+        padding: 1rem;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .select-button:hover {
+        background: var(--dark-green);
+      }
+
+      /* How It Works */
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .process-step {
+        text-align: center;
+        position: relative;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-gradient);
+        color: var(--white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1rem;
+      }
+
+      .step-title {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Split Section */
+      .split-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .split-content h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        color: var(--primary-green);
+      }
+
+      /* Testimonials */
+      .testimonials-slider {
+        position: relative;
+        overflow: hidden;
+        margin-top: 3rem;
+      }
+
+      .testimonial-card {
+        background: var(--white);
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+        text-align: center;
+        margin: 0 1rem;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--primary-green);
+      }
+
+      /* Contact Form */
+      .contact-form {
+        background: var(--gray-light);
+        padding: 3rem;
+        border-radius: 15px;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        outline: none;
+        border-color: var(--primary-green);
+      }
+      .form-group textarea:focus {
+        outline: none;
+        border-color: #29c4a9;
+      }
+
+      .form-group textarea {
+        height: 120px;
+        resize: vertical;
+      }
+
+      .submit-button {
+        width: 100%;
+        background: var(--primary-gradient);
+        color: var(--white);
+        border: none;
+        padding: 1rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+
+      .submit-button:hover {
+        background: var(--dark-green);
+      }
+
+      /* Footer */
+      footer {
+        background: var(--gray-dark);
+        color: var(--white);
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h4 {
+        color: var(--primary-green);
+        margin-bottom: 1rem;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #555;
+        padding-top: 1rem;
+        text-align: center;
+        color: var(--gray-medium);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .mobile-menu {
+          display: block;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .credit-score-animation {
+          display: none;
+        }
+
+        .split-section {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .pricing-card.featured {
+          transform: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .nav-container {
+          padding: 1rem;
+        }
+
+        .hero-content {
+          padding: 0 1rem;
+        }
+
+        .container {
+          padding: 0 1rem;
+        }
+
+        .contact-form {
+          padding: 2rem 1rem;
+        }
+      }
+      /* overlay css  */
+      .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .spinner {
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 0.8s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .submit-error {
+        display: none;
+      }
+      .success-message {
+        background: #d4edda;
+        color: #155724;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        display: none;
+      }
+      .jamleads {
+        color: var(--primary-green);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="logo"><img src="./assets/logo.png" alt="" /></div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="hero-content">
+        <h1>Build Strong Credit. Unlock New Possibilities.</h1>
+        <p>
+          Professional credit restoration services to help you achieve your
+          financial goals.
+        </p>
+        <a href="#contact" class="cta-button">Get Started Today</a>
+      </div>
+      <div class="credit-score-animation">
+        <div class="score-display">
+          <div>Credit Score</div>
+          <div class="score-number" id="animatedScore">580</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title">Why Choose LVL UP Solutions?</h2>
+        <p class="section-subtitle">
+          We provide comprehensive credit restoration services with a
+          personalized approach
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-user-cog"></i>
+            </div>
+            <h3>Personalized Plans</h3>
+            <p>
+              Tailored credit restoration strategies designed specifically for
+              your unique financial situation.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Expert Guidance</h3>
+            <p>
+              Our certified credit specialists provide professional advice and
+              ongoing support throughout your journey.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure Portal</h3>
+            <p>
+              Access your progress through our secure client portal with
+              real-time updates and document management.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3>Full Transparency</h3>
+            <p>
+              Complete visibility into our process with detailed reporting and
+              clear communication every step of the way.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Score Monitoring</h3>
+            <p>
+              Continuous credit score monitoring with alerts and insights to
+              help maintain your improved credit.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Results Guarantee</h3>
+            <p>
+              We stand behind our work with a satisfaction guarantee and proven
+              track record of success.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Service Packages -->
+    <section id="pricing" class="section" style="background: var(--gray-light)">
+      <div class="container">
+        <h2 class="section-title">Service Packages</h2>
+        <p class="section-subtitle">
+          Choose the plan that best fits your credit restoration needs
+        </p>
+
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <div class="package-name">Starter Boost</div>
+              <div class="package-price">
+                $599<span style="font-size: 1rem">/month</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <p style="font-size: 12px">
+                Perfect for clients with minor credit challenges who want a
+                strong professional start.
+              </p>
+              <ul class="feature-list">
+                <li>Personalized Credit Plan</li>
+                <li>Live Credit Consultation</li>
+                <li>Disputes to All 3 Bureaus</li>
+                <li>Up to 2 Creditor Intervention Letters</li>
+                <li>24/7 Access to Online Client Portal</li>
+                <li>Monthly Score Tracking</li>
+                <li>Email & Phone Support</li>
+                <li>Satisfaction Guarantee</li>
+              </ul>
+              <p class="pricing-sub-text">
+                Credit monitoring required 💳 Split Option: 2 payments of
+                $314.50 (includes $30 split fee)
+              </p>
+              <button class="select-button">Select Starter</button>
+            </div>
+          </div>
+
+          <div class="pricing-card featured">
+            <div class="pricing-header">
+              <div class="package-name">Level Up Growth</div>
+              <div class="package-price">
+                $799<span style="font-size: 1rem">/month</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <p style="font-size: 12px">
+                Great for clients with moderate credit issues needing
+                comprehensive repair support.
+              </p>
+              <ul class="feature-list">
+                <li>Personalized Credit Plan</li>
+                <li>Live Credit Consultation</li>
+                <li>Disputes to All 3 Bureaus</li>
+                <li>Up to 6 Creditor Intervention Letters</li>
+                <li>24/7 Access to Online Client Portal</li>
+                <li>Monthly Score Tracking</li>
+                <li>Email & Phone Support</li>
+                <li>Satisfaction Guarantee</li>
+              </ul>
+              <p class="pricing-sub-text">
+                Credit monitoring required 💳 Split Option: 2 payments of
+                $414.50 (includes $30 split fee)
+              </p>
+              <button class="select-button">Select Growth</button>
+            </div>
+          </div>
+
+          <div class="pricing-card">
+            <div class="pricing-header">
+              <div class="package-name">Business Credit Builder</div>
+              <div class="package-price">
+                $999<span style="font-size: 1rem">/month</span>
+              </div>
+            </div>
+            <div class="pricing-body">
+              <p style="font-size: 12px">
+                Designed for those with advanced credit needs or looking to
+                transition into business credit building.
+              </p>
+              <ul class="feature-list">
+                <li>Personalized Credit Plan</li>
+                <li>Live Credit Consultation</li>
+                <li>Disputes to All 3 Bureaus</li>
+                <li>Up to 10 Creditor Intervention Letters</li>
+                <li>24/7 Access to Online Client Portal</li>
+                <li>Monthly Score Tracking</li>
+                <li>Email & Phone Support</li>
+                <li>Satisfaction Guarantee</li>
+              </ul>
+
+              <p class="pricing-sub-text">
+                Credit monitoring required 💳 Split Option: 2 payments of
+                $514.50 (includes $30 split fee)
+              </p>
+              <button class="select-button">Select Premium Business</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">
+          Our proven 5-step process for credit restoration success
+        </p>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-title">Initial Consultation</div>
+            <p>Free analysis of your credit reports and financial goals</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-title">Custom Strategy</div>
+            <p>Develop a personalized plan based on your unique situation</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-title">File Disputes</div>
+            <p>Challenge inaccurate items with credit bureaus and creditors</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-title">Monitor & Adjust</div>
+            <p>Track progress and refine strategy as results come in</p>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <div class="step-title">Achieve Results</div>
+            <p>Celebrate your improved credit score and new opportunities</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dispute Solutions & Credit Monitoring -->
+    <section class="section" style="background: var(--gray-light)">
+      <div class="container">
+        <div class="split-section">
+          <div class="split-content">
+            <h3>Dispute Solutions</h3>
+            <p>
+              Our technical dispute process leverages federal consumer
+              protection laws to challenge inaccurate, outdated, or unverifiable
+              information on your credit reports. We use sophisticated
+              strategies and maintain detailed documentation to ensure maximum
+              effectiveness.
+            </p>
+            <ul style="margin-top: 1rem; list-style: none">
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >FCRA and FDCPA compliance
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Advanced dispute methodologies
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Creditor negotiations
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Legal escalation when necessary
+              </li>
+            </ul>
+          </div>
+
+          <div class="split-content">
+            <h3>SmartCredit Monitoring</h3>
+            <p>
+              Stay ahead of changes to your credit profile with our
+              comprehensive monitoring system. Receive instant alerts for any
+              changes and access powerful tools to protect your financial
+              identity.
+            </p>
+            <ul style="margin-top: 1rem; list-style: none">
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Real-time credit alerts
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Score tracking and trends
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >$1M fraud protection
+              </li>
+              <li style="padding: 0.5rem 0">
+                <i
+                  class="fas fa-check"
+                  style="color: var(--primary-green); margin-right: 0.5rem"
+                ></i
+                >Identity theft insurance
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">
+          Real results from real people who transformed their credit
+        </p>
+
+        <div class="testimonials-slider">
+          <div class="testimonial-card">
+            <p class="testimonial-text">
+              "LVL UP Solutions helped me increase my credit score by 127 points
+              in just 6 months. I was finally able to qualify for my dream
+              home!"
+            </p>
+            <div class="testimonial-author">- Sarah M., Phoenix AZ</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About/Our Mission -->
+    <section id="about" class="section" style="background: var(--gray-light)">
+      <div class="container">
+        <h2 class="section-title">Our Mission</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto">
+          <p style="font-size: 1.2rem; margin-bottom: 2rem">
+            At LVL UP Solutions LLC, we believe everyone deserves access to fair
+            credit and financial opportunities. Our mission is to empower
+            individuals and families across the nation with the knowledge,
+            tools, and professional support needed to achieve their credit
+            goals.
+          </p>
+
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 2rem;
+              margin-top: 3rem;
+            "
+          >
+            <div>
+              <h4
+                style="
+                  color: var(--primary-green);
+                  font-size: 2rem;
+                  font-weight: 700;
+                "
+              >
+                50+
+              </h4>
+              <p>States Served</p>
+            </div>
+            <div>
+              <h4
+                style="
+                  color: var(--primary-green);
+                  font-size: 2rem;
+                  font-weight: 700;
+                "
+              >
+                10,000+
+              </h4>
+              <p>Clients Helped</p>
+            </div>
+            <div>
+              <h4
+                style="
+                  color: var(--primary-green);
+                  font-size: 2rem;
+                  font-weight: 700;
+                "
+              >
+                95%
+              </h4>
+              <p>Success Rate</p>
+            </div>
+            <div>
+              <h4
+                style="
+                  color: var(--primary-green);
+                  font-size: 2rem;
+                  font-weight: 700;
+                "
+              >
+                24/7
+              </h4>
+              <p>Support Available</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Contact & Lead Form -->
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title">Get Started Today</h2>
+        <p class="section-subtitle">
+          Take the first step towards better credit. We'll respond within 24
+          hours.
+        </p>
+
+        <form class="contact-form" id="contactForm">
+          <div class="success-message" id="success-message">
+            Thank you! Your message has been sent. We'll get back to you soon.
+          </div>
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" name="phone" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <p class="submit-error" id="submit-error" style="color: red">
+            Error sumbitting mesage: try again later
+          </p>
+          <button type="submit" class="submit-button" id="submit-button">
+            Get My Free Consultation
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Contact Information</h4>
+            <p>
+              <i class="fas fa-map-marker-alt"></i> 5900 Balcones Drive STE
+              100<br />Austin, TX 78731 USA
+            </p>
+            <p><i class="fas fa-phone"></i> 430-231-9500</p>
+            <p><i class="fas fa-envelope"></i> info@lvlupsolutions.com</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Business Hours</h4>
+            <p>Monday - Friday: 9:00 AM - 5:00 PM (USA Time)</p>
+            <p>Saturday: Closed</p>
+            <p>Sunday: Closed</p>
+            <p>Emergency Support: Not Available</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Services</h4>
+            <p>Credit Report Analysis</p>
+            <p>Dispute Resolution</p>
+            <p>Credit Monitoring</p>
+            <p>Score Improvement</p>
+            <p>Identity Protection</p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Resources</h4>
+            <p>Credit Education</p>
+            <p>Financial Planning</p>
+            <p>Client Portal</p>
+            <p>Support Center</p>
+            <p>Blog & Articles</p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            Project managed by
+            <a href="https://jamleads.framer.website/" class="jamleads"
+              >Jamleads</a
+            >
+            &copy;2025 LVL UP Solutions LLC. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        emailjs.init("QbzUbABJUOUZF5NmN");
+        // Animated Credit Score Counter
+        function animateScore() {
+          const scoreElement = document.getElementById("animatedScore");
+          const startScore = 580;
+          const endScore = 750;
+          const duration = 3000;
+          const startTime = performance.now();
+
+          function updateScore(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentScore = Math.floor(
+              startScore + (endScore - startScore) * easeOutQuart
+            );
+
+            scoreElement.textContent = currentScore;
+
+            if (progress < 1) {
+              requestAnimationFrame(updateScore);
+            }
+          }
+
+          requestAnimationFrame(updateScore);
+        }
+
+        // Start animation when page loads
+        window.addEventListener("load", () => {
+          setTimeout(animateScore, 1000);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              const headerOffset = 80;
+              const elementPosition = target.offsetTop;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector(".mobile-menu");
+        const navLinks = document.querySelector(".nav-links");
+
+        mobileMenu.addEventListener("click", () => {
+          navLinks.style.display =
+            navLinks.style.display === "flex" ? "none" : "flex";
+          if (navLinks.style.display === "flex") {
+            navLinks.style.position = "absolute";
+            navLinks.style.top = "100%";
+            navLinks.style.left = "0";
+            navLinks.style.right = "0";
+            navLinks.style.backgroundColor = "white";
+            navLinks.style.flexDirection = "column";
+            navLinks.style.padding = "1rem";
+            navLinks.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+            navLinks.style.zIndex = "1000";
+          }
+        });
+
+        const formTrigger = document.getElementById("submit-button");
+        const loadingOverlay = document.getElementById("loading-overlay");
+        const submitError = document.getElementById("submit-error");
+
+        formTrigger.addEventListener("click", (e) => {
+          e.preventDefault();
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const tel = document.getElementById("phone").value;
+          const message = document.getElementById("message").value;
+
+          const templateParams = {
+            to_name: name,
+            to_email: email,
+            tel: tel,
+            message: message,
+          };
+
+          loadingOverlay.style.display = "flex";
+
+          // Send visitor confirmation email
+          emailjs
+            .send("service_vtjgdpe", "template_m5qvi9k", templateParams)
+            .then(
+              function (response) {
+                console.log("Visitor email sent successfully!", response);
+                name.value = "";
+                email.value = "";
+                message.value = "";
+              },
+              function (error) {
+                console.log("Failed to send visitor email...", error);
+                loadingOverlay.style.display = "none";
+                submitError.style.display = "flex";
+              }
+            );
+
+          emailjs
+            .send("service_vtjgdpe", "template_9p6dx7p", templateParams)
+            .then(
+              function (response) {
+                document.getElementById("success-message").style.display =
+                  "block";
+
+                loadingOverlay.style.display = "none";
+              },
+              function (error) {
+                console.log("Failed to send admin email...", error);
+              }
+            );
+          // Show success message and reset form
+          setTimeout(() => {
+            document.getElementById("success-message").style.display = "none";
+          }, 5000);
+        });
+
+        //   Form submission handling
+        //   document
+        //     .getElementById("contactForm")
+        //     .addEventListener("submit", function (e) {
+        //       e.preventDefault();
+
+        //       // Get form data
+        //       const formData = new FormData(this);
+        //       const data = {};
+        //       formData.forEach((value, key) => {
+        //         data[key] = value;
+        //       });
+
+        //       // Simulate form submission
+        //       const submitButton = this.querySelector(".submit-button");
+        //       const originalText = submitButton.textContent;
+
+        //       submitButton.textContent = "Submitting...";
+        //       submitButton.disabled = true;
+
+        //       // Simulate API call
+        //       setTimeout(() => {
+        //         alert(
+        //           "Thank you for your interest! We will contact you within 24 hours to schedule your free consultation."
+        //         );
+        //         this.reset();
+        //         submitButton.textContent = originalText;
+        //         submitButton.disabled = false;
+        //       }, 2000);
+        //     });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animation = "fadeInUp 0.8s ease forwards";
+            }
+          });
+        }, observerOptions);
+
+        // Observe all feature cards and process steps
+        document.addEventListener("DOMContentLoaded", () => {
+          const elementsToAnimate = [
+            ...document.querySelectorAll(".feature-card"),
+            ...document.querySelectorAll(".pricing-card"),
+            ...document.querySelectorAll(".process-step"),
+            ...document.querySelectorAll(".testimonial-card"),
+          ];
+
+          elementsToAnimate.forEach((el) => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(30px)";
+            observer.observe(el);
+          });
+        });
+
+        // Add hover effects for interactive elements
+        document
+          .querySelectorAll(".feature-card, .pricing-card")
+          .forEach((card) => {
+            card.addEventListener("mouseenter", function () {
+              this.style.transform = "translateY(-10px)";
+              this.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.2)";
+            });
+
+            card.addEventListener("mouseleave", function () {
+              this.style.transform = "translateY(0)";
+              this.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
+            });
+          });
+
+        // Testimonial carousel (simple version)
+        let currentTestimonial = 0;
+        const testimonials = [
+          {
+            text: "LVL UP Solutions helped me increase my credit score by 127 points in just 6 months. I was finally able to qualify for my dream home!",
+            author: "Sarah M., Phoenix AZ",
+          },
+          {
+            text: "Professional, reliable, and results-driven. They removed 8 negative items from my credit report and saved me thousands in interest rates.",
+            author: "Michael R., Dallas TX",
+          },
+          {
+            text: "The team at LVL UP Solutions made the entire process simple and stress-free. My credit score went from 540 to 720 in 8 months!",
+            author: "Jennifer L., Miami FL",
+          },
+        ];
+
+        function showTestimonial(index) {
+          const testimonialCard = document.querySelector(".testimonial-card");
+          const testimonialText =
+            testimonialCard.querySelector(".testimonial-text");
+          const testimonialAuthor = testimonialCard.querySelector(
+            ".testimonial-author"
+          );
+
+          testimonialText.textContent = `"${testimonials[index].text}"`;
+          testimonialAuthor.textContent = `- ${testimonials[index].author}`;
+        }
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+          currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+          showTestimonial(currentTestimonial);
+        }, 5000);
+
+        // Package selection handling
+        document.querySelectorAll(".select-button").forEach((button) => {
+          button.addEventListener("click", function () {
+            const packageName =
+              this.closest(".pricing-card").querySelector(
+                ".package-name"
+              ).textContent;
+
+            // Scroll to contact form
+            document
+              .getElementById("contact")
+              .scrollIntoView({ behavior: "smooth" });
+
+            // Pre-select the package in the form
+            const packageSelect = document.getElementById("package");
+            const packageValue = packageName.toLowerCase();
+            packageSelect.value = packageValue;
+
+            // Highlight the form
+            const form = document.querySelector(".contact-form");
+            form.style.border = "3px solid var(--primary-green)";
+            setTimeout(() => {
+              form.style.border = "none";
+            }, 2000);
+          });
+        });
+
+        // Add scroll-based navbar styling
+        window.addEventListener("scroll", () => {
+          const nav = document.querySelector("nav");
+          if (window.scrollY > 50) {
+            nav.style.backgroundColor = "rgba(255, 255, 255, 0.95)";
+            nav.style.backdropFilter = "blur(10px)";
+          } else {
+            nav.style.backgroundColor = "var(--white)";
+            nav.style.backdropFilter = "none";
+          }
+        });
+
+        // Add loading animation
+        window.addEventListener("load", () => {
+          document.body.style.opacity = "0";
+          document.body.style.transition = "opacity 0.5s ease";
+
+          setTimeout(() => {
+            document.body.style.opacity = "1";
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
